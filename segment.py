@@ -92,6 +92,11 @@ if __name__ == "__main__":
                 cv2.drawContours(clone, [segmented + (right, top)], -1, (0, 0, 255))
                 cv2.imshow("Thesholded", thresholded)
 
+                # save every instance to an image
+                img_name = "1.png"
+                save_img = cv2.resize(thresholded, (64, 64))
+                cv2.imwrite(img_name, save_img)
+
         # draw the segmented hand
         cv2.rectangle(clone, (left, top), (right, bottom), (0,255,0), 2)
 
