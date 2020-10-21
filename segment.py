@@ -166,7 +166,8 @@ if __name__ == "__main__":
         # draw the segmented hand
         cv2.rectangle(clone, (left, top), (right, bottom), (0,255,0), 2)
 
-        cv2.putText(frame, img_text, (30, 400), cv2.FONT_HERSHEY_TRIPLEX, 1.5, (0, 255, 0))
+        # Add predict text
+        cv2.putText(clone, img_text, (30, 300), cv2.FONT_HERSHEY_TRIPLEX, 1.5, (0, 255, 0))
 
         # increment the number of frames
         num_frames += 1
@@ -176,6 +177,8 @@ if __name__ == "__main__":
 
         # observe the keypress by the user
         keypress = cv2.waitKey(1) & 0xFF
+
+        img_text = predictor()
 
         # if the user pressed "q", then stop looping
         if keypress == ord("q"):
