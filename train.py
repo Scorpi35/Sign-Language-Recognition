@@ -4,6 +4,7 @@ from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers import Dense, Dropout
 from keras import optimizers
+from keras.preprocessing.image import ImageDataGenerator
 
 # CNN
 classifier = Sequential()
@@ -32,6 +33,12 @@ classifier.add(Dropout(0.5))
 classifier.add(Dense(26, activation="softmax"))
 
 # Compiling
+classifier.compile(
+    optimizer=optimizers.SGD(lr=0.01),
+    loss="categorical_crossentropy",
+    metrics=['accuracy']
+)
+
 
 
 
