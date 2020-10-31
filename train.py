@@ -26,4 +26,12 @@ classifier.add(MaxPooling2D(pool_size=(2, 2)))
 # Flattening
 classifier.add(Flatten())
 
+# Full Conenction
+classifier.add(Dense(256, activation="relu"))
+classifier.add(Dropout(0.5))
+classifier.add(Dense(26, activation="softmax"))
+
+# Compiling
+
+
 
