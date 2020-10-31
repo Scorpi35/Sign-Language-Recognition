@@ -5,6 +5,8 @@ from keras.layers import Flatten
 from keras.layers import Dense, Dropout
 from keras import optimizers
 from keras.preprocessing.image import ImageDataGenerator
+import h5py
+import matplotlib.pyplot as plt
 
 # CNN
 classifier = Sequential()
@@ -69,6 +71,26 @@ model = classifier.fit_generator(
     validation_data=test_set,
     validation_steps=6500
 )
+
+# Saving the model
+classifier.save('Trained_model.h5')
+
+plt.plot(model.history['acc'])
+plt.plot(model.history['val_acc'])
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+# summarize history for loss
+
+plt.plot(model.history['loss'])
+plt.plot(model.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
 
 
 
