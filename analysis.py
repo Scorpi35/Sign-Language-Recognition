@@ -23,6 +23,12 @@ classifier.add(Dense(256, activation='relu'))
 classifier.add(Dropout(0.5))
 classifier.add(Dense(26, activation='softmax'))
 
+# Compiling CNN
+classifier.compile(
+              optimizer=optimizers.SGD(lr=0.01),
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
 # Generating image data
 train_datagen = ImageDataGenerator(
         rescale=1./255,
@@ -30,34 +36,22 @@ train_datagen = ImageDataGenerator(
         zoom_range=0.2,
         horizontal_flip=True)
 
-# Compiling CNN
-classifier.compile(
-              optimizer=optimizers.SGD(lr = 0.01),
-              loss='categorical_crossentropy',
-              metrics=['accuracy'])
+training_set = train_datagen.flow_from_directory(
+        directory=r"./data/training_set",
+        target_size=(64, 64),
+        color_mode="grayscale",
+        batch_size=32,
+        class_mode='categorical')
 
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
-training_set = train_datagen.flow_from_directory(
-        'data/training_set',
-        target_size=(64, 64),
-        batch_size=32,
-        class_mode='categorical')
-
 test_set = test_datagen.flow_from_directory(
-        'data/test_set',
+        directory=r"./data/test_set",
         target_size=(64, 64),
+        color_mode="grayscale",
         batch_size=32,
         class_mode='categorical')
-
-model = classifier.fit_generator(
-        training_set,
-        steps_per_epoch=800,
-        epochs=25,
-        validation_data=test_set,
-        validation_steps=6500
-      )
 
 
 
