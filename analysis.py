@@ -7,14 +7,14 @@ from keras import optimizers
 
 classifier = Sequential()
 
-classifier.add(Convolution2D(32, 3, 3, input_shape=(64, 64, 3), activation="relu"))
+classifier.add(Convolution2D(32, (3, 3), input_shape=(3, 64, 64), activation="relu", data_format='channels_first'))
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-classifier.add(Convolution2D(32, 3,  3, activation='relu'))
+classifier.add(Convolution2D(32, (3,  3), activation='relu'))
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-# classifier.add(Convolution2D(32, 3,  3, activation='relu'))
-# # classifier.add(MaxPooling2D(pool_size=(2, 2)))
+classifier.add(Convolution2D(32, (3,  3), activation='relu'))
+classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
 classifier.add(Flatten())
 
