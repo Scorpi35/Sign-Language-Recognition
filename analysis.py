@@ -5,6 +5,7 @@ from keras.layers import Flatten
 from keras.layers import Dense, Dropout
 from keras import optimizers
 from keras.preprocessing.image import ImageDataGenerator
+import tensorflow as tf
 
 classifier = Sequential()
 
@@ -36,22 +37,36 @@ train_datagen = ImageDataGenerator(
         zoom_range=0.2,
         horizontal_flip=True)
 
-training_set = train_datagen.flow_from_directory(
+train_generator = train_datagen.flow_from_directory(
         directory=r"./data/training_set",
         target_size=(64, 64),
         color_mode="grayscale",
         batch_size=32,
-        class_mode='categorical')
+        class_mode="categorical")
 
 
-test_datagen = ImageDataGenerator(rescale=1./255)
+valid_datagen = ImageDataGenerator(rescale=1./255)
 
-test_set = test_datagen.flow_from_directory(
+valid_generator = valid_datagen.flow_from_directory(
         directory=r"./data/test_set",
         target_size=(64, 64),
         color_mode="grayscale",
         batch_size=32,
-        class_mode='categorical')
+        class_mode="categorical",
+        shuffle=True,
+        seed=42
+)
+
+STEP_SIZE_TRAIN = train_generator.n//train_generator.batch_size
+STEP_SIZE_VALID = valid_generator.n//valid_generator.batch_size
+
+classifier.fit_generator(generator=train_generator,
+                    steps_per_epoch=STEP_SIZE_TRAIN,
+                    validation_data=valid_generator,
+                    validation_steps=STEP_SIZE_VALID,
+                    epochs=25
+)
+
 
 
 
