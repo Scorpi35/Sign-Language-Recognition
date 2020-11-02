@@ -1,21 +1,23 @@
 from keras.models import Sequential
-from keras.layers import Convolution2D
+from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers import Dense, Dropout
 from keras import optimizers
 from keras.preprocessing.image import ImageDataGenerator
 import tensorflow as tf
+import h5py
+
 
 classifier = Sequential()
 
-classifier.add(Convolution2D(32, (3, 3), input_shape=(3, 64, 64), activation="relu", data_format='channels_first'))
+classifier.add(Conv2D(32, (3, 3), input_shape=(3, 64, 64), activation="relu", data_format='channels_first'))
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-classifier.add(Convolution2D(32, (3,  3), activation='relu'))
+classifier.add(Conv2D(32, (3,  3), activation='relu'))
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-classifier.add(Convolution2D(32, (3,  3), activation='relu'))
+classifier.add(Conv2D(32, (3,  3), activation='relu'))
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
 classifier.add(Flatten())
@@ -57,15 +59,18 @@ valid_generator = valid_datagen.flow_from_directory(
         seed=42
 )
 
+
 STEP_SIZE_TRAIN = train_generator.n//train_generator.batch_size
 STEP_SIZE_VALID = valid_generator.n//valid_generator.batch_size
 
-classifier.fit_generator(generator=train_generator,
-                    steps_per_epoch=STEP_SIZE_TRAIN,
-                    validation_data=valid_generator,
-                    validation_steps=STEP_SIZE_VALID,
-                    epochs=25
-)
+
+classifier.fit(train_generator,
+               steps_per_epoch=STEP_SIZE_TRAIN,
+               validation_data=valid_generator,
+               validation_steps=STEP_SIZE_VALID,
+               epochs=25)
+
+classifier.save("Trained_model.h5")
 
 
 
