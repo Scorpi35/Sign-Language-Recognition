@@ -34,3 +34,7 @@
 * **Optimizer**:- SGD(Stochastic Gradient Descent)
 * **Epochs**:- 25
 * **Validation Steps**:- 
+
+#### Future Extension
+* Training the network with words gestures like Hello, Good and so on.
+* Create a plugin for a messenger
