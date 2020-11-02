@@ -6,6 +6,7 @@ from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers import Dense, Dropout
 from keras import optimizers
+import matplotlib.pyplot as plt
 
 # Initialing the CNN
 classifier = Sequential()
