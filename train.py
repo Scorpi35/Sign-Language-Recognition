@@ -1,82 +1,84 @@
-# Part 1 - Building the CNN
-#importing the Keras libraries and packages
 from keras.models import Sequential
-from keras.layers import Convolution2D
+from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers import Dense, Dropout
 from keras import optimizers
+from keras.preprocessing.image import ImageDataGenerator
+import tensorflow as tf
+import h5py
 import matplotlib.pyplot as plt
 
-# Initialing the CNN
+# Sequential layer
 classifier = Sequential()
 
-# Step 1 - Convolutio Layer
-classifier.add(Convolution2D(32, 3,  3, input_shape = (64, 64, 3), activation = 'relu'))
+# First convolution layer followed by MaxPooling
+classifier.add(Conv2D(32, (3, 3), input_shape=(3, 64, 64), activation="relu", data_format='channels_first'))
+classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-#step 2 - Pooling
-classifier.add(MaxPooling2D(pool_size =(2,2)))
+# Second convolution layer followed by MaxPooling
+classifier.add(Conv2D(32, (3,  3), activation='relu'))
+classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-# Adding second convolution layer
-classifier.add(Convolution2D(32, 3,  3, activation = 'relu'))
-classifier.add(MaxPooling2D(pool_size =(2,2)))
+# Third convolution layer followed by MaxPooling
+classifier.add(Conv2D(32, (3,  3), activation='relu'))
+classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-#Adding 3rd Concolution Layer
-classifier.add(Convolution2D(64, 3,  3, activation = 'relu'))
-classifier.add(MaxPooling2D(pool_size =(2,2)))
-
-
-#Step 3 - Flattening
+# Converting output of third layer to vector
 classifier.add(Flatten())
 
-#Step 4 - Full Connection
-classifier.add(Dense(256, activation = 'relu'))
+classifier.add(Dense(256, activation='relu'))
 classifier.add(Dropout(0.5))
-classifier.add(Dense(26, activation = 'softmax'))
+classifier.add(Dense(26, activation='softmax'))
 
-#Compiling The CNN
+# Compiling CNN
 classifier.compile(
-              optimizer = optimizers.SGD(lr = 0.01),
-              loss = 'categorical_crossentropy',
-              metrics = ['accuracy'])
+              optimizer=optimizers.SGD(lr=0.01),
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
 
-#Part 2 Fittting the CNN to the image
-from keras.preprocessing.image import ImageDataGenerator
+# Generating training data
 train_datagen = ImageDataGenerator(
         rescale=1./255,
         shear_range=0.2,
         zoom_range=0.2,
         horizontal_flip=True)
 
-test_datagen = ImageDataGenerator(rescale=1./255)
-
-training_set = train_datagen.flow_from_directory(
-        'data/training_set',
+train_generator = train_datagen.flow_from_directory(
+        directory=r"./data/training_set",
         target_size=(64, 64),
+        color_mode="grayscale",
         batch_size=32,
-        class_mode='categorical')
+        class_mode="categorical")
 
-test_set = test_datagen.flow_from_directory(
-        'data/test_set',
+# Generating validation data
+valid_datagen = ImageDataGenerator(rescale=1./255)
+
+valid_generator = valid_datagen.flow_from_directory(
+        directory=r"./data/test_set",
         target_size=(64, 64),
+        color_mode="grayscale",
         batch_size=32,
-        class_mode='categorical')
+        class_mode="categorical",
+        shuffle=True,
+        seed=42
+)
 
-model = classifier.fit_generator(
-        training_set,
-        steps_per_epoch=800,
-        epochs=25,
-        validation_data = test_set,
-        validation_steps = 6500
-      )
 
-'''#Saving the model
-import h5py
-classifier.save('Trained_model.h5')'''
+STEP_SIZE_TRAIN = train_generator.n//train_generator.batch_size
+STEP_SIZE_VALID = valid_generator.n//valid_generator.batch_size
 
-print(model.history.keys())
-import matplotlib.pyplot as plt
-# summarize history for accuracy
+# Training the model
+model = classifier.fit(train_generator,
+               steps_per_epoch=STEP_SIZE_TRAIN,
+               validation_data=valid_generator,
+               validation_steps=STEP_SIZE_VALID,
+               epochs=25)
+
+# Saving the model
+classifier.save("Trained_model.h5")
+
+# Visualize model history
 plt.plot(model.history['acc'])
 plt.plot(model.history['val_acc'])
 plt.title('model accuracy')
@@ -84,7 +86,6 @@ plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
-# summarize history for loss
 
 plt.plot(model.history['loss'])
 plt.plot(model.history['val_loss'])
@@ -93,4 +94,10 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
+
+
+
+
+
+
 
