@@ -35,6 +35,8 @@
 * **Epochs**:- 25
 * **Validation Steps**:- 
 
-#### Future Extension
+## Future Extension
 * Training the network with words gestures like Hello, Good and so on.
 * Create a plugin for a messenger
+
+#### How to run the program?
