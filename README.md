@@ -23,7 +23,14 @@
 * **Total Classes**:- 26 (Total Albhabets)
 * **Images per class**:- 6500
 
+## Algorithm
+1. Gestures image caputed through ** Semantic Segmentation**
+2. Training a CNN neural network
 
+## Training Description
 
-
-
+#### CNN (Convolutional Neural Network)
+* **Model**:- Sequential, 3 Conv2D layer, 3 MaxPooling layer, 1 Flatten layer, 2 Dense and 1 Dropout layer
+* **Optimizer**:- SGD(Stochastic Gradient Descent)
+* **Epochs**:- 25
+* **Validation Steps**:- 
