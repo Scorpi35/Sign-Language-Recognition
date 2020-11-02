@@ -24,7 +24,7 @@
 * **Images per class**:- 6500
 
 ## Algorithm
-1. Gestures image caputed through ** Semantic Segmentation**
+1. Gestures image caputed through **Semantic Segmentation**
 2. Training a CNN neural network
 
 ## Training Description
