@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d39173e-c0bc-4a11-93e5-8b7329fafdc4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/create_gesture.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_gesture.py" afterDir="false" />
-    </list>
+    <list default="true" id="3d39173e-c0bc-4a11-93e5-8b7329fafdc4" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="segment.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/segment.py">
+      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="132" column="30" lean-forward="true" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
+              <caret line="132" column="30" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
               <folding>
                 <element signature="e#19#29#0" expanded="true" />
               </folding>
@@ -245,10 +243,10 @@
     <entry file="file://$PROJECT_DIR$/data/training_set/HELLO/1.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/segment.py">
+    <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="132" column="30" lean-forward="true" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
+          <caret line="132" column="30" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
           <folding>
             <element signature="e#19#29#0" expanded="true" />
           </folding>
