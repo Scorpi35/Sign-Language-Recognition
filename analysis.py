@@ -7,6 +7,7 @@ from keras import optimizers
 from keras.preprocessing.image import ImageDataGenerator
 import tensorflow as tf
 import h5py
+import matplotlib.pyplot as plt
 
 
 classifier = Sequential()
@@ -64,13 +65,23 @@ STEP_SIZE_TRAIN = train_generator.n//train_generator.batch_size
 STEP_SIZE_VALID = valid_generator.n//valid_generator.batch_size
 
 
-classifier.fit(train_generator,
+model = classifier.fit(train_generator,
                steps_per_epoch=STEP_SIZE_TRAIN,
                validation_data=valid_generator,
                validation_steps=STEP_SIZE_VALID,
                epochs=25)
 
 classifier.save("Trained_model.h5")
+
+# Visualize model history
+
+plt.plot(model.history['acc'])
+plt.plot(model.history['val_acc'])
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
 
 
 
