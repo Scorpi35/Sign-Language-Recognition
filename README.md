@@ -8,7 +8,7 @@
 * Semenatic Segmentation
 * Convolutional Neural Network
 
-## Tool and libraries
+## Tools and libraries
 * **Language**:- Python
 * **IDE**:- PyCharm
 * **Libraries**:- Keras, TensorFlow, OpenCV
@@ -33,17 +33,18 @@
 * **Model**:- Sequential, 3 Conv2D layer, 3 MaxPooling layer, 1 Flatten layer, 2 Dense and 1 Dropout layer
 * **Optimizer**:- SGD(Stochastic Gradient Descent)
 * **Epochs**:- 25
-* **Validation Steps**:- 
 
-## Future Extension
-* Training the network with words gestures like Hello, Good and so on.
-* Create a plugin for a messenger
+## How to run the program?
 
 #### Install required libraries
-* Run **pip install -r requirements.txt**
+* Run **pip install -r requirements.txt** 
 
-#### Instructions to run the program
+#### Run the program 
 * **Step 1:-** python run.py
 * **Step 2:-** Let the program run first
 * **Step 3:-** Do not change the position of the device once the program runs
 * **Step 4:-** Give correspoding hand gestures for the letters (A- Z) and observe the result
+
+## Future Extension
+* Training the network with word like Hello, Good and so on.
+* Create a plugin for a messenger
