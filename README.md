@@ -34,6 +34,10 @@
 * **Optimizer**:- SGD(Stochastic Gradient Descent)
 * **Epochs**:- 25
 
+## Screenshots
+
+![alt text](https://github.com/Scorpi35/Sign-Language-Recognition/blob/main/Screenshots/B_SS.png)
+
 ## How to run the program?
 
 #### Install required libraries
