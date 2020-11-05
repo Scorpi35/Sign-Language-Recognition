@@ -38,7 +38,7 @@
 
 Prediction for 'B'             |  Prediction for 'C'
 :-------------------------:|:-------------------------:
-<img src="https://github.com/Scorpi35/Sign-Language-Recognition/blob/main/Screenshots/B_SS.png" width="250" height="250" />  |  <img src="https://github.com/Scorpi35/Sign-Language-Recognition/blob/main/Screenshots/C_SS.png" width="250" height="250" />
+<img src="https://github.com/Scorpi35/Sign-Language-Recognition/blob/main/Screenshots/B_SS.png" width="350" height="350" />  |  <img src="https://github.com/Scorpi35/Sign-Language-Recognition/blob/main/Screenshots/C_SS.png" width="350" height="350" />
 
 ## How to run the program?
 
