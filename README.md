@@ -39,10 +39,12 @@
 * Training the network with words gestures like Hello, Good and so on.
 * Create a plugin for a messenger
 
-#### Install required libraries
-* Run **pip install -r requirements.txt**
+## How to run the program?
 
-#### Instructions to run the program
+#### Install required libraries
+* Run **pip install -r requirements.txt** 
+
+#### Run the program 
 * **Step 1:-** python run.py
 * **Step 2:-** Let the program run first
 * **Step 3:-** Do not change the position of the device once the program runs
