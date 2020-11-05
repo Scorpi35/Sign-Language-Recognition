@@ -35,7 +35,7 @@
 * **Epochs**:- 25
 
 ## Screenshots
-<img src="https://github.com/Scorpi35/Sign-Language-Recognition/blob/main/Screenshots/B_SS.png" width="48" height="48>
+<img src="https://github.com/Scorpi35/Sign-Language-Recognition/blob/main/Screenshots/B_SS.png" width="48" height="48" />
 
 ## How to run the program?
 
