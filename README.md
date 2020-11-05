@@ -46,5 +46,5 @@
 * **Step 4:-** Give correspoding hand gestures for the letters (A- Z) and observe the result
 
 ## Future Extension
-* Training the network with words gestures like Hello, Good and so on.
+* Training the network with word like Hello, Good and so on.
 * Create a plugin for a messenger
