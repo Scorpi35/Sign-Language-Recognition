@@ -8,7 +8,7 @@
 * Semenatic Segmentation
 * Convolutional Neural Network
 
-## Tool and libraries
+## Tools and libraries
 * **Language**:- Python
 * **IDE**:- PyCharm
 * **Libraries**:- Keras, TensorFlow, OpenCV
