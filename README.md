@@ -45,7 +45,8 @@ Prediction for 'B'             |  Prediction for 'C'
 #### Install required libraries
 * Run **pip install -r requirements.txt** 
 
-#### Run the program 
+#### Run the program
+(**Note:-** Before running the program make sure to make your device stable)
 * **Step 1:-** python run.py
 * **Step 2:-** Let the program run first
 * **Step 3:-** Do not change the position of the device once the program runs
